@@ -29,8 +29,7 @@ class SequelizeSoftDelete {
     const updateDeleted = async function (options, config) {
       const docs = await Model.update(
         { [deletedOptions.field]: deletedOptions.deleted },
-        options,
-        config
+        {...options, ...config},        
       )
       return docs.length
     }
